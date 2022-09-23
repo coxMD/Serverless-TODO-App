@@ -2,7 +2,7 @@ import { CustomAuthorizerEvent, CustomAuthorizerResult } from 'aws-lambda'
 import 'source-map-support/register'
 import { verify} from 'jsonwebtoken'
 import { createLogger } from '../../utils/logger'
-import Axios from 'axios'
+import axios from 'axios'
 import { JwtPayload } from '../../auth/JwtPayload'
 
 const logger = createLogger('auth');
@@ -60,7 +60,7 @@ async function verifyToken(authHeader: string): Promise<JwtPayload> {
   try {
 
     const token = getToken(authHeader)
-    const res = await Axios.get(jwksUrl);
+    const res = await axios.get(jwksUrl);
 
     // You can read more about how to do this here: https://auth0.com/blog/navigating-rs256-and-jwks/
     const pemData = res['data']['keys'][0]['x5c'][0]

@@ -14,8 +14,8 @@ provider:
   name: aws
   runtime: nodejs12.x
  # lambdaHashingVersion: '20201221'
-  stage: ${opt:stage, 'dev'}
-  region: ${opt:region, 'us-east-1'}
+  stage: ${opt:stage, 'prod'}
+  region: ${opt:region, 'us-east-2'}
 
   tracing:
     lambda: true
@@ -24,7 +24,7 @@ provider:
   # Use these variables in the functions and resouorces section below. For example, 
   # ${self:provider.environment.ATTACHMENT_S3_BUCKET}
   environment:
-    PROJECT_NAME: todo-app-serveless
+    PROJECT_NAME: todo-serveless
     TODOS_TABLE: todo-serverless-${self:provider.stage}
     S3_BUCKET_NAME: todo-serverless-${self:provider.stage}
 
