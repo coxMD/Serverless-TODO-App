@@ -12,7 +12,7 @@ const XAWS = AWSXRay.captureAWS(AWS);
 export class todoAccess {
   constructor(
     private readonly docClient: DocumentClient = new XAWS.DynamoDB.DocumentClient(),
-    private readonly s3: Types = new AWS.S3({ signatureVersion: "v4" }),
+    private readonly s3: Types = new XAWS.S3({ signatureVersion: "v4" }),
     private readonly todoTable = process.env.TODOS_TABLE,
     private readonly bucketName = process.env.S3_BUCKET_NAME
   ) {}
